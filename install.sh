@@ -11,6 +11,25 @@ fi
 # Determine the directory where the script and associated files are located
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+echo "=== Checking if autossh is installed ==="
+if ! command -v autossh &>/dev/null; then
+    echo "autossh not found, attempting to install it..."
+    if command -v apt-get &>/dev/null; then
+        apt-get update
+        apt-get install -y autossh
+    elif command -v yum &>/dev/null; then
+        yum install -y autossh
+    elif command -v dnf &>/dev/null; then
+        dnf install -y autossh
+    else
+        echo "No supported package manager found. Please install autossh manually."
+        exit 1
+    fi
+    echo "autossh installed successfully."
+else
+    echo "autossh is already installed."
+fi
+
 echo "=== Creating group 'wra' if it does not exist ==="
 if ! getent group wra > /dev/null; then
     groupadd wra
@@ -64,7 +83,7 @@ if [[ ! -d "$SSH_DIR" ]]; then
     chmod 700 "$SSH_DIR"
 fi
 
-# We'll use the ed25519 algorithm for the key.
+# Use ed25519 algorithm for the SSH key pair.
 if [[ ! -f "$SSH_DIR/id_ed25519.pub" ]]; then
     su - wra -c "ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 -N '' -q"
     echo "SSH key pair generated for user 'wra'."
