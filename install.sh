@@ -11,9 +11,8 @@ fi
 # Determine the directory where the script and associated files are located
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-echo "=== Checking if autossh is installed ==="
+echo "=== Installing autossh ==="
 if ! command -v autossh &>/dev/null; then
-    echo "autossh not found, attempting to install it..."
     if command -v apt-get &>/dev/null; then
         apt-get update
         apt-get install -y autossh
@@ -30,7 +29,7 @@ else
     echo "autossh is already installed."
 fi
 
-echo "=== Creating group 'wra' if it does not exist ==="
+echo "=== Creating group 'wra' ==="
 if ! getent group wra > /dev/null; then
     groupadd wra
     echo "Group 'wra' created."
@@ -38,7 +37,7 @@ else
     echo "Group 'wra' already exists."
 fi
 
-echo "=== Creating user 'wra' if it does not exist ==="
+echo "=== Creating user 'wra' ==="
 if ! id -u wra >/dev/null 2>&1; then
     useradd -m -g wra -s /bin/bash wra
     echo "User 'wra' created."
@@ -95,5 +94,6 @@ echo "---------------------------------------------"
 echo "SSH Public Key for user 'wra':"
 cat "$SSH_DIR/id_ed25519.pub"
 echo "---------------------------------------------"
-echo "IMPORTANT: Please copy the above public key and add it to the .ssh/authorized_keys file on your VPS."
+echo "/!\ Please copy the above public key and add it to the .ssh/authorized_keys file in the home folder of the sshuser on your VPS."
+echo "[i] You'll also have to change GatewayPorts to yes in /etc/ssh/sshd_config to allow external ips to access the tunnel."
 echo "Installation complete."
