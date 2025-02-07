@@ -51,14 +51,14 @@ mkdir -p /etc/wormhole-ra
 
 echo "=== Copying tunnel.conf and tunnel.sh to /etc/wormhole-ra ==="
 if [[ -f "$SCRIPT_DIR/tunnel.conf" ]]; then
-    cp "$SCRIPT_DIR/tunnel.conf" /etc/wormhole-ra/
+    mv "$SCRIPT_DIR/tunnel.conf" /etc/wormhole-ra/
     echo "tunnel.conf copied."
 else
     echo "Warning: tunnel.conf not found in $SCRIPT_DIR. Skipping..."
 fi
 
 if [[ -f "$SCRIPT_DIR/tunnel.sh" ]]; then
-    cp "$SCRIPT_DIR/tunnel.sh" /etc/wormhole-ra/
+    mv "$SCRIPT_DIR/tunnel.sh" /etc/wormhole-ra/
     echo "tunnel.sh copied."
 else
     echo "Warning: tunnel.sh not found in $SCRIPT_DIR. Skipping..."
@@ -69,7 +69,7 @@ chown -R wra:wra /etc/wormhole-ra
 
 echo "=== Copying wormhole-ra.service to /etc/systemd/system/ ==="
 if [[ -f "$SCRIPT_DIR/wormhole-ra.service" ]]; then
-    cp "$SCRIPT_DIR/wormhole-ra.service" /etc/systemd/system/
+    mv "$SCRIPT_DIR/wormhole-ra.service" /etc/systemd/system/
     echo "wormhole-ra.service copied."
 else
     echo "Warning: wormhole-ra.service not found in $SCRIPT_DIR. Skipping..."
