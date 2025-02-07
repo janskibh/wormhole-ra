@@ -4,7 +4,7 @@ WRA is a remote access utility based on SSH tunneling, it allows you to create a
 
 ## Requirements
 - A linux server.
-- A VPS on the internet with an SSH server.
+- A VPS on the internet with SSH.
   
 ## Installation
 
