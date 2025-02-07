@@ -1,0 +1,14 @@
+[Unit]
+Description=Wormhole Remote Access
+After=network.target
+
+[Service]
+User=wra
+Group=wra
+Type=simple
+ExecStart=/etc/wormhole-ra/tunnel.sh
+Restart=always
+
+[Install]
+WantedBy=default.target
+RequiredBy=network.target
