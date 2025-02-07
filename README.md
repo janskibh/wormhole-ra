@@ -21,6 +21,10 @@ Copy the pair of keys printed at the end of the installation and paste them at t
 
 Change `GatewayPorts` to `yes` in `/etc/ssh/sshd_config` on your VPS.
 
+## Configuration
+
+Add redirections in `/etc/wormhole-ra/tunnel.conf`
+
 If you have any troubles, please report them to bellon@ieee.org.
 If you have questions, you can contact me on Discord -> @jan.mp4
 
