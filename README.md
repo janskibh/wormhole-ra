@@ -8,13 +8,13 @@ WRA is a remote access utility based on SSH tunneling, it allows you to expose r
   
 ## Installation
 
-Install git
+Install git<br>
 `sudo apt update && sudo apt install git`
 
-Clone the repo and enter the wormhole-ra directory on your local server.
+Clone the repo and enter the wormhole-ra directory on your local server.<br>
 `git clone https://github.com/janskibh/wormhole-ra && cd wormhole-ra`
 
-Run install.sh
+Run install.sh<br>
 `./install.sh`
 
 Copy the pair of keys printed at the end of the installation and paste them at the end of `/home/<sshuser>/.ssh/authorized_keys` on your VPS.
