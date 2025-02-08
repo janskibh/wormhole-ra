@@ -17,13 +17,13 @@ Clone the repo and enter the wormhole-ra directory on your local server.<br>
 Run install.sh<br>
 `./install.sh`
 
-Copy the pair of keys printed at the end of the installation and paste them at the end of `/home/<sshuser>/.ssh/authorized_keys` on your VPS.
+Copy the public ssh key given at the end of the installation and paste it at the end of `/home/<sshuser>/.ssh/authorized_keys` on your VPS.
 
 Change `GatewayPorts` to `yes` in `/etc/ssh/sshd_config` on your VPS.
 
 ## Configuration
 
-Define The SSH_USER and SSH_HOST ans add redirections in `/etc/wormhole-ra/tunnel.conf`
+Define The SSH_USER and SSH_HOST and add redirections in `/etc/wormhole-ra/tunnel.conf`
 
 When the redirections are created, you can access your ressources at [vps ip]:[public port]
 
